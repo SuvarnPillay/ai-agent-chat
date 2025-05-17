@@ -14,7 +14,9 @@ async function sendMessage(message, threadId) {
       body: JSON.stringify({ message, threadId }),
     }
   );
-  if (!response.ok) throw new Error('Network response was not ok');
+  if (!response.ok) throw new Error('Network response was not ok')
+    else {
+  console.log("TEST ********* Response status:", response.status);}
   const text = await response.text();
   return text;
 }
