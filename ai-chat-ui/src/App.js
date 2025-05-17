@@ -1,10 +1,10 @@
 import ChatUI from './ChatUI.jsx';
 
-// ...existing code...
+// filepath: c:\dev\AI\Lab\Agent\proj_1\ai-agent-chat\ai-chat-ui\src\App.js
 async function sendMessage(message, threadId) {
-  const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000/api/chat/chat';
+  const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
   const response = await fetch(
-    `${apiUrl}`,
+    `${apiUrl}/api/chat/chat`,
     {
       method: 'POST',
       headers: {
@@ -17,7 +17,6 @@ async function sendMessage(message, threadId) {
   const text = await response.text();
   return text;
 }
-// ...existing code...
 
 function App() {
   return (
