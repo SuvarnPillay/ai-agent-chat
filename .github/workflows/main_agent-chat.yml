@@ -55,4 +55,4 @@ jobs:
           app-name: 'agent-chat'
           slot-name: 'Production'
           package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C022CFBB0DCD4D0E8E3F01DDE0A8C46E }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_FE5D4A8076E646FB94D3ADBCCCF4C097 }}
