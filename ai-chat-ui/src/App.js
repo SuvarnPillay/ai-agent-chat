@@ -1,5 +1,7 @@
 import ChatUI from './ChatUI.jsx';
 
+console.log(process.env.REACT_APP_API_URL)
+
 // filepath: c:\dev\AI\Lab\Agent\proj_1\ai-agent-chat\ai-chat-ui\src\App.js
 async function sendMessage(message, threadId) {
   const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
