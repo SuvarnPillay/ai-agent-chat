@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 
-const apiBaseUrl = process.env.REACT_APP_API_URL || "http://localhost:5000";
+const apiBaseUrl = process.env.REACT_APP_API_URL || "http://localhost:5000/";
 
 const ChatUI = ({ sendMessage }) => {
   const [messages, setMessages] = useState([]);
@@ -16,7 +16,7 @@ const ChatUI = ({ sendMessage }) => {
     const getThread = async () => {
       let tid = localStorage.getItem("ai_thread_id");
       if (!tid) {
-        const resp = await fetch(`${apiBaseUrl}/api/chat/thread`, { method: "POST" });
+        const resp = await fetch(`${apiBaseUrl}api/chat/thread`, { method: "POST" });
         tid = (await resp.json()).threadId;
         localStorage.setItem("ai_thread_id", tid);
       }
