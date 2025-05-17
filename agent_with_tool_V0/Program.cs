@@ -23,8 +23,8 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReactApp",
         policy => policy
-            .WithOrigins("http://localhost:3000/",
-                "https://calm-pond-02dfab80f.6.azurestaticapps.net/"
+            .WithOrigins("http://localhost:3000",
+                "https://calm-pond-02dfab80f.6.azurestaticapps.net"
               )
             
             .AllowAnyHeader()
@@ -50,5 +50,6 @@ app.UseCors("AllowReactApp");
 app.UseRouting();
 app.UseAuthorization();
 app.MapControllers();
+app.MapGet("/", () => "AI Agent API is running!");
 
 app.Run();

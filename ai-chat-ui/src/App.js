@@ -1,11 +1,13 @@
 import ChatUI from './ChatUI.jsx';
 
 console.log("REACT_APP_API_URL at build:", process.env.REACT_APP_API_URL);
-// filepath: c:\dev\AI\Lab\Agent\proj_1\ai-agent-chat\ai-chat-ui\src\App.js
+
+// Remove trailing slash to avoid double slashes or missing slashes
+const apiUrl = (process.env.REACT_APP_API_URL || 'http://localhost:5000').replace(/\/+$/, '');
+// const apiUrl = ("http://localhost:5000").replace(/\/+$/, "");
 async function sendMessage(message, threadId) {
-  const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000/';
   const response = await fetch(
-    `${apiUrl}api/chat/chat`,
+    `${apiUrl}/api/chat/chat`,
     {
       method: 'POST',
       headers: {

@@ -3,6 +3,7 @@ import ReactMarkdown from "react-markdown";
 
 // Remove trailing slash to avoid double slashes in requests
 const apiBaseUrl = (process.env.REACT_APP_API_URL || "http://localhost:5000").replace(/\/+$/, "");
+// const apiBaseUrl = ("http://localhost:5000").replace(/\/+$/, "");
 
 const ChatUI = ({ sendMessage }) => {
   const [messages, setMessages] = useState([]);
@@ -19,6 +20,7 @@ const ChatUI = ({ sendMessage }) => {
       if (!tid) {
         const resp = await fetch(`${apiBaseUrl}/api/chat/thread`, { method: "POST" });
         const data = await resp.json();
+        console.log("THREAD CODE");
         tid = data.threadId;
         localStorage.setItem("ai_thread_id", tid);
       }
