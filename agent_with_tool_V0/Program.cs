@@ -42,12 +42,9 @@ builder.Services.AddSingleton<agent_with_tool_V0.services.PrivateAgent>(sp => {
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+// Enable Swagger UI in all environments for debugging
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseCors("AllowReactApp");
 app.UseRouting();

@@ -31,6 +31,10 @@ namespace agent_with_tool_V0.Controllers
         public async Task<IActionResult> CreateThread()
         {
             var threadId = await _agent.CreateThreadAsync();
+            if (string.IsNullOrWhiteSpace(threadId))
+            {
+                threadId = Guid.NewGuid().ToString();
+            }
             return Ok(new { threadId });
         }
 

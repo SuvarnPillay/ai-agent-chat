@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 
-const apiBaseUrl = process.env.REACT_APP_API_URL || "http://localhost:5000/";
+// Remove trailing slash to avoid double slashes in requests
+const apiBaseUrl = (process.env.REACT_APP_API_URL || "http://localhost:5000").replace(/\/+$/, "");
 
 const ChatUI = ({ sendMessage }) => {
   const [messages, setMessages] = useState([]);
@@ -16,8 +17,9 @@ const ChatUI = ({ sendMessage }) => {
     const getThread = async () => {
       let tid = localStorage.getItem("ai_thread_id");
       if (!tid) {
-        const resp = await fetch(`${apiBaseUrl}api/chat/thread`, { method: "POST" });
-        tid = (await resp.json()).threadId;
+        const resp = await fetch(`${apiBaseUrl}/api/chat/thread`, { method: "POST" });
+        const data = await resp.json();
+        tid = data.threadId;
         localStorage.setItem("ai_thread_id", tid);
       }
       setThreadId(tid);
