@@ -53,3 +53,11 @@ C:\dev\AI\Lab\Agent\proj_1\ai-agent-chat\agent_with_tool_V0\obj\Release\net9.0\r
 C:\dev\AI\Lab\Agent\proj_1\ai-agent-chat\agent_with_tool_V0\obj\Release\net9.0\agent_with_tool_V0.pdb
 C:\dev\AI\Lab\Agent\proj_1\ai-agent-chat\agent_with_tool_V0\obj\Release\net9.0\agent_with_tool_V0.genruntimeconfig.cache
 C:\dev\AI\Lab\Agent\proj_1\ai-agent-chat\agent_with_tool_V0\obj\Release\net9.0\ref\agent_with_tool_V0.dll
+C:\dev\AI\Lab\Agent\proj_1\ai-agent-chat\agent_with_tool_V0\bin\Release\net9.0\appsettings.example.json
+C:\dev\AI\Lab\Agent\proj_1\ai-agent-chat\agent_with_tool_V0\bin\Release\net9.0\appsettings.json
+C:\dev\AI\Lab\Agent\proj_1\ai-agent-chat\agent_with_tool_V0\bin\Release\net9.0\publish\agent_with_tool_V0.deps.json
+C:\dev\AI\Lab\Agent\proj_1\ai-agent-chat\agent_with_tool_V0\bin\Release\net9.0\publish\agent_with_tool_V0.runtimeconfig.json
+C:\dev\AI\Lab\Agent\proj_1\ai-agent-chat\agent_with_tool_V0\obj\Release\net9.0\agent_with_tool_V0.MvcApplicationPartsAssemblyInfo.cs
+C:\dev\AI\Lab\Agent\proj_1\ai-agent-chat\agent_with_tool_V0\obj\Release\net9.0\agent_with_tool_V0.MvcApplicationPartsAssemblyInfo.cache
+C:\dev\AI\Lab\Agent\proj_1\ai-agent-chat\agent_with_tool_V0\obj\Release\net9.0\agent_with_tool_V0.RazorAssemblyInfo.cache
+C:\dev\AI\Lab\Agent\proj_1\ai-agent-chat\agent_with_tool_V0\obj\Release\net9.0\agent_with_tool_V0.RazorAssemblyInfo.cs
