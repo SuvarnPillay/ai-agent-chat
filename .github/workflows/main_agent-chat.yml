@@ -27,13 +27,13 @@ jobs:
         run: dotnet build agent_with_tool_V0  --configuration Release
 
       - name: dotnet publish
-        run: dotnet publish agent_with_tool_V0 -c Release -o "${{env.DOTNET_ROOT}}/myapp"
+        run: dotnet publish agent_with_tool_V0 -c Release -o myapp
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: .net-app
-          path: ${{env.DOTNET_ROOT}}/myapp
+          path: myapp
 
   deploy:
     runs-on: windows-latest
@@ -47,12 +47,12 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: .net-app
-      
+
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'agent-chat'
           slot-name: 'Production'
-          package: .
+          package: myapp
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_FE5D4A8076E646FB94D3ADBCCCF4C097 }}
