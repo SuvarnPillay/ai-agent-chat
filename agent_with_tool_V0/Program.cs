@@ -32,13 +32,17 @@ builder.Services.AddCors(options =>
 });
 
 // Register PrivateAgent as a singleton
-builder.Services.AddSingleton<agent_with_tool_V0.services.PrivateAgent>(sp => {
+builder.Services.AddSingleton<agent_with_tool_V0.services.PrivateAgent>(sp =>
+{
     var config = sp.GetRequiredService<IConfiguration>();
     var connectionString = config["AzureAIStudio:ConnectionString"];
     var agentId = config["AzureAIStudio:AgentId"];
     var threadId = config["AzureAIStudio:ThreadId"];
     return new agent_with_tool_V0.services.PrivateAgent(connectionString, agentId, threadId);
 });
+Console.WriteLine("Connection String: " + builder.Configuration["AzureAIStudio:ConnectionString"]);
+Console.WriteLine("Agent ID: " + builder.Configuration["AzureAIStudio:AgentId"]);   
+Console.WriteLine("Thread ID: " + builder.Configuration["AzureAIStudio:ThreadId"]);
 
 var app = builder.Build();
 
