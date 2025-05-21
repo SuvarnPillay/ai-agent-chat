@@ -69,19 +69,22 @@ builder.Services.AddSingleton<agent_with_tool_V0.services.PrivateAgent>(sp =>
 
 var app = builder.Build();
 
-// Immediately after builder.Build():
+// Add global exception handler middleware before any other middleware
 app.UseExceptionHandler(errorApp =>
 {
     errorApp.Run(async context =>
     {
         var errorFeature = context.Features.Get<IExceptionHandlerFeature>();
         var logger = context.RequestServices.GetRequiredService<ILogger<Program>>();
-        logger.LogError(errorFeature.Error, "Unhandled exception caught in middleware");
+        if (errorFeature?.Error != null)
+        {
+            logger.LogError(errorFeature.Error, "Unhandled exception caught in middleware");
+        }
         context.Response.StatusCode = 500;
+        context.Response.ContentType = "text/plain";
         await context.Response.WriteAsync("An internal error occurred.");
     });
 });
-
 
 // Enable Swagger UI in all environments for debugging
 app.UseSwagger();
@@ -91,7 +94,6 @@ app.UseCors("AllowReactApp");
 app.UseRouting();
 app.UseAuthorization();
 app.MapControllers();
-// app.MapGet("/", () => "AI Agent API is running!");
 app.MapGet("/", (ILogger<Program> logger, IConfiguration config) => {
     logger.LogInformation("Root endpoint hit: AI Agent API is running!");
     logger.LogInformation("Environment: {Environment}", Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT"));
@@ -100,9 +102,5 @@ app.MapGet("/", (ILogger<Program> logger, IConfiguration config) => {
     logger.LogInformation("AzureAIStudio:ThreadId: {ThreadId}", config["AzureAIStudio:ThreadId"]);
     return "AI Agent API is running!";
 });
-
-
-
-
 
 app.Run();
