@@ -73,12 +73,16 @@ app.UseRouting();
 app.UseAuthorization();
 app.MapControllers();
 app.MapGet("/", () => "AI Agent API is running!");
-Console.WriteLine("***********TESTING***********");
-Console.WriteLine("***********TESTING***********");
-Console.WriteLine("***********TESTING***********");
-Console.WriteLine("***********TESTING***********");
-Console.WriteLine("***********TESTING***********");
-Console.WriteLine("***********TESTING***********");
+app.MapGet("/", (ILogger<Program> logger, IConfiguration config) => {
+    logger.LogInformation("Root endpoint hit: AI Agent API is running!");
+    logger.LogInformation("Environment: {Environment}", Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT"));
+    logger.LogInformation("AzureAIStudio:ConnectionString: {ConnectionString}", config["AzureAIStudio:ConnectionString"]);
+    logger.LogInformation("AzureAIStudio:AgentId: {AgentId}", config["AzureAIStudio:AgentId"]);
+    logger.LogInformation("AzureAIStudio:ThreadId: {ThreadId}", config["AzureAIStudio:ThreadId"]);
+    return "AI Agent API is running!";
+});
+
+
 
 
 
