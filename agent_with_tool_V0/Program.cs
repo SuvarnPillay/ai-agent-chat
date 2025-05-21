@@ -72,7 +72,7 @@ app.UseCors("AllowReactApp");
 app.UseRouting();
 app.UseAuthorization();
 app.MapControllers();
-app.MapGet("/", () => "AI Agent API is running!");
+// app.MapGet("/", () => "AI Agent API is running!");
 app.MapGet("/", (ILogger<Program> logger, IConfiguration config) => {
     logger.LogInformation("Root endpoint hit: AI Agent API is running!");
     logger.LogInformation("Environment: {Environment}", Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT"));
