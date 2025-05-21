@@ -10,6 +10,7 @@ using System.Text.Json;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Diagnostics;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
+builder.Logging.AddDebug();
+// builder.Logging.AddApplicationInsights();
 
 // Allow CORS for React dev server
 builder.Services.AddCors(options =>
@@ -63,6 +68,20 @@ builder.Services.AddSingleton<agent_with_tool_V0.services.PrivateAgent>(sp =>
 });
 
 var app = builder.Build();
+
+// Immediately after builder.Build():
+app.UseExceptionHandler(errorApp =>
+{
+    errorApp.Run(async context =>
+    {
+        var errorFeature = context.Features.Get<IExceptionHandlerFeature>();
+        var logger = context.RequestServices.GetRequiredService<ILogger<Program>>();
+        logger.LogError(errorFeature.Error, "Unhandled exception caught in middleware");
+        context.Response.StatusCode = 500;
+        await context.Response.WriteAsync("An internal error occurred.");
+    });
+});
+
 
 // Enable Swagger UI in all environments for debugging
 app.UseSwagger();
