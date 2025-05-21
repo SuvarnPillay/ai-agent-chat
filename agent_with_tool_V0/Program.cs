@@ -73,7 +73,12 @@ app.UseRouting();
 app.UseAuthorization();
 app.MapControllers();
 app.MapGet("/", () => "AI Agent API is running!");
-
+Console.WriteLine("***********TESTING***********");
+Console.WriteLine("***********TESTING***********");
+Console.WriteLine("***********TESTING***********");
+Console.WriteLine("***********TESTING***********");
+Console.WriteLine("***********TESTING***********");
+Console.WriteLine("***********TESTING***********");
 
 
 
