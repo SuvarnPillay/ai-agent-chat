@@ -41,6 +41,12 @@ builder.Services.AddSingleton<agent_with_tool_V0.services.PrivateAgent>(sp =>
         var connectionString = config["AzureAIStudio:ConnectionString"];
         var agentId = config["AzureAIStudio:AgentId"];
         var threadId = config["AzureAIStudio:ThreadId"];
+        if (string.IsNullOrWhiteSpace(connectionString))
+            throw new Exception("AzureAIStudio:ConnectionString is missing or empty!");
+        if (string.IsNullOrWhiteSpace(agentId))
+            throw new Exception("AzureAIStudio:AgentId is missing or empty!");
+        if (string.IsNullOrWhiteSpace(threadId))
+            throw new Exception("AzureAIStudio:ThreadId is missing or empty!");
         logger.LogInformation("Connection String: {ConnectionString}", connectionString);
         logger.LogInformation("Agent ID: {AgentId}", agentId);
         logger.LogInformation("Thread ID: {ThreadId}", threadId);
