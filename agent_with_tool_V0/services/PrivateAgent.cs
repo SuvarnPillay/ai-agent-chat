@@ -65,8 +65,16 @@ namespace agent_with_tool_V0.services
 
         public async Task<string> CreateThreadAsync()
         {
-            var threadResponse = await agentsClient.CreateThreadAsync();
-            return threadResponse.Value.Id;
+            try
+            {
+                var threadResponse = await agentsClient.CreateThreadAsync();
+                return threadResponse.Value.Id;
+            }
+            catch (Exception ex)
+            {
+                // Log the error and return a message for debugging
+                return $"[Error]: {ex.Message} | {ex.StackTrace}";
+            }
         }
     }
 }
