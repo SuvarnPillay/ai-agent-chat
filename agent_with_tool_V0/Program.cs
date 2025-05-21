@@ -24,7 +24,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowReactApp",
         policy => policy
             .WithOrigins("http://localhost:3000",
-                "https://calm-pond-02dfab80f.6.azurestaticapps.net"
+                "https://calm-pond-02dfab80f.6.azurestaticapps.net/"
               )
             
             .AllowAnyHeader()
