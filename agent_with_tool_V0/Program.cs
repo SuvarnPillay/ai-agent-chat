@@ -35,15 +35,22 @@ builder.Services.AddCors(options =>
 builder.Services.AddSingleton<agent_with_tool_V0.services.PrivateAgent>(sp =>
 {
     var config = sp.GetRequiredService<IConfiguration>();
-    var connectionString = config["AzureAIStudio:ConnectionString"];
-    var agentId = config["AzureAIStudio:AgentId"];
-    var threadId = config["AzureAIStudio:ThreadId"];
-    // Log to console for Azure log stream
     var logger = sp.GetRequiredService<ILoggerFactory>().CreateLogger("Startup");
-    logger.LogInformation("Connection String: {ConnectionString}", connectionString);
-    logger.LogInformation("Agent ID: {AgentId}", agentId);
-    logger.LogInformation("Thread ID: {ThreadId}", threadId);
-    return new agent_with_tool_V0.services.PrivateAgent(connectionString, agentId, threadId);
+    try
+    {
+        var connectionString = config["AzureAIStudio:ConnectionString"];
+        var agentId = config["AzureAIStudio:AgentId"];
+        var threadId = config["AzureAIStudio:ThreadId"];
+        logger.LogInformation("Connection String: {ConnectionString}", connectionString);
+        logger.LogInformation("Agent ID: {AgentId}", agentId);
+        logger.LogInformation("Thread ID: {ThreadId}", threadId);
+        return new agent_with_tool_V0.services.PrivateAgent(connectionString, agentId, threadId);
+    }
+    catch (Exception ex)
+    {
+        logger.LogError(ex, "Failed to create PrivateAgent");
+        throw;
+    }
 });
 
 var app = builder.Build();
