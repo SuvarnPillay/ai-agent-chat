@@ -31,6 +31,11 @@ namespace agent_with_tool_V0.Controllers
         public async Task<IActionResult> CreateThread()
         {
             var threadId = await _agent.CreateThreadAsync();
+            if (threadId.StartsWith("[Error]:"))
+            {
+                // Return 500 with error details for debugging
+                return StatusCode(500, new { error = threadId });
+            }
             if (string.IsNullOrWhiteSpace(threadId))
             {
                 threadId = Guid.NewGuid().ToString();
