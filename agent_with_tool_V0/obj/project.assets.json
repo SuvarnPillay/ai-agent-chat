@@ -1834,23 +1834,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\suvar\\.nuget\\packages\\": {},
+    "C:\\Users\\Suvarn.Pillay\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\dev\\AI\\Lab\\Agent\\proj_1\\ai-agent-chat\\agent_with_tool_V0\\agent_with_tool_V0.csproj",
+      "projectUniqueName": "C:\\dev\\ai-agent-chat\\agent_with_tool_V0\\agent_with_tool_V0.csproj",
       "projectName": "agent_with_tool_V0",
-      "projectPath": "C:\\dev\\AI\\Lab\\Agent\\proj_1\\ai-agent-chat\\agent_with_tool_V0\\agent_with_tool_V0.csproj",
-      "packagesPath": "C:\\Users\\suvar\\.nuget\\packages\\",
-      "outputPath": "C:\\dev\\AI\\Lab\\Agent\\proj_1\\ai-agent-chat\\agent_with_tool_V0\\obj\\",
+      "projectPath": "C:\\dev\\ai-agent-chat\\agent_with_tool_V0\\agent_with_tool_V0.csproj",
+      "packagesPath": "C:\\Users\\Suvarn.Pillay\\.nuget\\packages\\",
+      "outputPath": "C:\\dev\\ai-agent-chat\\agent_with_tool_V0\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\suvar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Suvarn.Pillay\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -1939,7 +1939,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.204/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

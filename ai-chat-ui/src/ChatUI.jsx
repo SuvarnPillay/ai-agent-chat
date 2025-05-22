@@ -17,12 +17,23 @@ const ChatUI = ({ sendMessage }) => {
   useEffect(() => {
     const getThread = async () => {
       let tid = localStorage.getItem("ai_thread_id");
-      if (!tid) {
+      let retries = 0;
+      const maxRetries = 10;
+      while ((!tid || typeof tid !== 'string' || !tid.startsWith('thread')) && retries < maxRetries) {
         const resp = await fetch(`${apiBaseUrl}/api/chat/thread`, { method: "POST" });
         const data = await resp.json();
-        console.log("THREAD CODE");
         tid = data.threadId;
-        localStorage.setItem("ai_thread_id", tid);
+        if (tid && typeof tid === 'string' && tid.startsWith('thread')) {
+          localStorage.setItem("ai_thread_id", tid);
+          break;
+        }
+        retries++;
+        await new Promise(res => setTimeout(res, 300)); // wait 300ms before retry
+      }
+      if (!tid || typeof tid !== 'string' || !tid.startsWith('thread')) {
+        setThreadId(null);
+        alert('Failed to get a valid thread ID from the server after several attempts. Please try refreshing the page.');
+        return;
       }
       setThreadId(tid);
     };

@@ -6,6 +6,9 @@ console.log("REACT_APP_API_URL at build:", process.env.REACT_APP_API_URL);
 const apiUrl = (process.env.REACT_APP_API_URL || 'http://localhost:5000').replace(/\/+$/, '');
 // const apiUrl = ("http://localhost:5000").replace(/\/+$/, "");
 async function sendMessage(message, threadId) {
+  if (!threadId || typeof threadId !== 'string' || !threadId.startsWith('thread')) {
+    throw new Error('Invalid threadId. Please refresh the page or start a new conversation.');
+  }
   const response = await fetch(
     `${apiUrl}/api/chat/chat`,
     {
